@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: #2f7aef;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.main-clima{
+    background-color: #1e1e1e;
+    margin: auto;
+    padding: 15px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+input[type=text]{
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 15px;
+    position: relative;
+}
+
+button{
+    position: absolute;
+    border: none;
+    background-color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+
+button svg{
+    width: 15px;
+}
+
+.bg-temp{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+span{
+    color: #2f7aef;
+}
+
+.info-temp{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.info-temp svg{
+    width: 15px;
+    height: 15px;
+}
+
+.temp{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#temp {
+    font-size: 3rem;
+    color: white;
+    position: relative;
+}
+
+#temp span{
+    font-size: 20px;
+    position: absolute;
+    margin-left: 4px;
+}
+
+
+.info-clima{
+    display: none;
+}
+
+.pressure{
+    display: flex;
+    align-items: center;
+}
+
+.pressure svg{
+    width: 10px;
+    height: 10px;
+}
+
+.humidity{
+    display: flex;
+    align-items: center;
+}
+
+.humidity svg{
+    width: 10px;
+    height: 10px;
+}
+
+p{
+    color: white;
+    font-size: 20px;
+    padding-left: 5px;
+}
