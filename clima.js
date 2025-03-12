@@ -2,7 +2,6 @@ async function getClima() {
     const key = '359706c0ee754da274f1977932d61a7c';
     let city = document.querySelector('#city_name').value;
 
-    // Se o campo estiver vazio, use uma cidade padrão
     if (!city) {
         city = 'Brusque';  
     }
@@ -16,31 +15,31 @@ async function getClima() {
 }
 
 async function mostrarClima() {  
-    document.querySelector('.info-clima').style.display = 'block';
-
     const objClima = await getClima();
 
     const mostrarInfo = {
         name: objClima.name,
-        temp: objClima.main.temp,
-        feels_like: objClima.main.feels_like,
-        temp_min: objClima.main.temp_min,
-        temp_max: objClima.main.temp_max,
+        temp: Math.round(objClima.main.temp),
+        feels_like: Math.round(objClima.main.feels_like), 
+        temp_min: Math.round(objClima.main.temp_min), 
+        temp_max: Math.round(objClima.main.temp_max), 
         pressure: objClima.main.pressure,
         humidity: objClima.main.humidity,
         sea_level: objClima.main.sea_level,
-        grnd_level: objClima.main.grnd_level
+        grnd_level: objClima.main.grnd_level,
+        description: objClima.weather[0].description
     };
 
     document.querySelector('#name').innerHTML = `${mostrarInfo.name}`;
     document.querySelector('#temp').innerHTML = `${mostrarInfo.temp}<span>°C</span>`;
-    document.querySelector('#feels_like').innerHTML = `${mostrarInfo.feels_like}°C`;
-    document.querySelector('#temp_min').innerHTML = `${mostrarInfo.temp_min}°C`;
-    document.querySelector('#temp_max').innerHTML = `${mostrarInfo.temp_max}°C`;
+    document.querySelector('#feels_like').innerHTML = `${mostrarInfo.feels_like}<span>°</span>`;
+    document.querySelector('#temp_min').innerHTML = `${mostrarInfo.temp_min}<span>°</span>`;
+    document.querySelector('#temp_max').innerHTML = `${mostrarInfo.temp_max}<span>°</span>`;
     document.querySelector('#pressure').innerHTML = `${mostrarInfo.pressure}hPa`;
     document.querySelector('#humidity').innerHTML = `${mostrarInfo.humidity}%`;
     document.querySelector('#sea_level').innerHTML = `${mostrarInfo.sea_level}hPa`;
     document.querySelector('#grnd_level').innerHTML = `${mostrarInfo.grnd_level}hPa`;
+    document.querySelector('#description').innerHTML = `${mostrarInfo.description}`;
 
     const clima = document.querySelector('#clima_atual');
     const imagens = [
@@ -72,7 +71,7 @@ async function mostrarClima() {
             clima.src = imagens[5];
             break;
         default:
-            clima.src = imagens[2];  // Caso o clima não seja identificado, use a imagem de céu limpo.
+            clima.src = imagens[2];  
     }
 }
 
