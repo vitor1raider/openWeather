@@ -9,7 +9,7 @@ body{
     background-color: #2f7aef;
 }
 
-.container{
+.container-main{
     display: flex;
     height: 100vh;
 }
@@ -35,31 +35,29 @@ input[type=text]{
     position: relative;
 }
 
-button{
+.btnSearch{
     position: absolute;
     border: none;
-    background-color: white;
-    padding: 15px;
-    cursor: pointer;
+    background-color: #2f7aef;
+    padding: 13px;
+    width: 50px;
 }
 
-button svg{
+.btnSearch:hover{
+    background-color: rgb(26, 93, 202);
+}
+
+.btnSearch svg{
     width: 15px;
 }
 
 .bg-temp{
-    height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    gap: 80px;
 }
 
-span{
-    color: #2f7aef;
-}
-
-.info-temp{
-    flex: 1;
+.weather{
     display: flex;
     align-items: center;
 }
@@ -69,13 +67,25 @@ span{
     height: 15px;
 }
 
+.info-clima p span{
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    margin-left: 4px;
+}
+
+.info-clima svg{
+    width: 15px;
+    height: 15px;
+}
+
 .temp{
     display: flex;
-    justify-content: space-evenly;
+    gap: 20px;
 }
 
 #temp {
-    font-size: 3rem;
+    font-size: 3.7rem;
     color: white;
     position: relative;
 }
@@ -83,12 +93,10 @@ span{
 #temp span{
     font-size: 20px;
     position: absolute;
-    margin-left: 4px;
 }
 
-
-.info-clima{
-    display: none;
+#name{
+    font-size: 44px;
 }
 
 .pressure{
@@ -97,8 +105,15 @@ span{
 }
 
 .pressure svg{
-    width: 10px;
-    height: 10px;
+    width: 20px;
+}
+
+.pressure path{
+    fill: orange;
+}
+
+.pressure span{
+    color: orange;
 }
 
 .humidity{
@@ -107,12 +122,30 @@ span{
 }
 
 .humidity svg{
-    width: 10px;
-    height: 10px;
+    width: 20px;
+}
+
+.humidity span{
+    color: #2f7aef;
 }
 
 p{
     color: white;
     font-size: 20px;
     padding-left: 5px;
+}
+
+.inline{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px; 
+}
+
+.inline li{
+    display: inline;
+}
+
+.text-ccc{
+    color: #ccc;
 }
