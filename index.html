@@ -4,62 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Previsão do tempo</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="js/clima.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
     <body>
-      <div class="container">
+      <div class="container-main">
         <div class="main-clima">
           <div class="search">
             <input type="text" id="city_name" placeholder="Buscar cidade">
-            <button onclick="mostrarClima()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></button>
+            <button class="btnSearch" onclick="mostrarClima()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#1e1e1e" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></button>
           </div>
-          <div class="info-clima">
-            <h1><p id="name"></p></h1>
-            <div class="bg-temp">
-              <div class="info-temp">
-                <p id="temp"></p>
-              </div>
-              <img id="clima_atual" src="" alt="clima_atual">  
+          <div class="content-clima">
+            <div class="mt-4 mb-4">
+              <h1 id="name" class="text-white ml-20"></h1>
+                <div class="bg-temp">
+                  <div class="d-flex align-center">
+                    <img id="clima_atual" src="" alt="clima_atual">
+                    <div class="info-temp">
+                      <p id="temp" class="m-0"></p>
+                    </div>
+                  </div>
+                <div class="info-clima">
+                  <ul class="list-group list-unstyled text-ccc" style="text-align: right;">
+                    <li class="text-capitalize" id="description">Descrição</li>
+                    <div class="inline">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="red"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+                      <li id="temp_max"></li>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="#2f7aef"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                      <li id="temp_min"></li>
+                    </div>
+                    <div class="inline">
+                      <li>Sensação térmica de </li><span id="feels_like"></span>
+                    </div>
+                  </ul>
+                </div>
             </div>
-            <div class="temp">
-              <div class="info-temp">
-                <p>Sens. Térmica <span id="feels_like"></span></p>
-              </div>
-            </div>
-            <div class="temp">
-              <div class="info-temp">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="#2f7aef"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-                <p><span id="temp_min"></span></p>
-              </div>
-              <div class="info-temp">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="red"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
-                <p><span id="temp_max"></span></p>   
-              </div>
-            </div>
+          </div>
             
             <div class="humidity">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28 27" enable-background="new 0 0 28 27" xml:space="preserve">
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="#2f7aef" d="M20,7c-2.2,0-8,8.8-8,12.2c0,4.3,3.6,7.8,8,7.8s8-3.5,8-7.8
-                  C28,16,22.2,7,20,7z M5,0C3.6,0,0,5.3,0,7.3C0,9.9,2.2,12,5,12s5-2.1,5-4.7C10,5.4,6.4,0,5,0z"></path>
-              </svg><p>Umidade <span id="humidity"></span></p>
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#2f7aef" d="M20,7c-2.2,0-8,8.8-8,12.2c0,4.3,3.6,7.8,8,7.8s8-3.5,8-7.8 C28,16,22.2,7,20,7z M5,0C3.6,0,0,5.3,0,7.3C0,9.9,2.2,12,5,12s5-2.1,5-4.7C10,5.4,6.4,0,5,0z"></path>
+              </svg><p class="m-0 pl-5">Umidade <span id="humidity"></span></p>
             </div>
+            <hr style="color: #2f7aef;" class="m-0">
+
             <div class="pressure">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26" enable-background="new 0 0 26 26" xml:space="preserve">
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M23.8,22.8c-0.1,0.1-0.2,0.3-0.3,0.4c-0.1,0.1-0.2,0.2-0.2,0.3
-                  l-0.1-0.1c-0.2,0.1-0.4,0.2-0.7,0.2c-0.8,0-1.5-0.7-1.5-1.5c0-0.1,0-0.2,0.1-0.3l-0.1-0.1c1.1-1.4,1.8-3.2,2-5.1L19,16v-0.8l3.9-0.6
-                  c-0.5-4.7-4.2-8.5-9-9l-0.6,3.9h-0.8L12,5.7c-1.3,0.1-2.4,0.5-3.5,1L6.6,4.3c1.9-1.1,4.1-1.7,6.4-1.7c7.2,0,13,5.8,13,13
-                  C26,18.3,25.2,20.7,23.8,22.8z M13,15.6c2.2,0,4,1.8,4,4c0,1.1-0.5,2.1-1.2,2.9c-0.2,0.4-0.4,0.7-0.8,0.9c-0.4,0.2-0.9,0.3-1.3,0.2
-                  c-0.2,0-0.5,0.1-0.7,0.1c-2.2,0-4-1.8-4-4c0-0.9,0.3-1.7,0.8-2.4L3,2.4l9.3,13.3C12.5,15.6,12.8,15.6,13,15.6z M4.3,10.8
-                  c-0.6,1.2-1.1,2.5-1.2,3.9L7,15.2V16l-3.9,0.6c0.2,1.9,0.9,3.7,2,5.1l-0.1,0.1C5,21.9,5,22,5,22.1c0,0.8-0.7,1.5-1.5,1.5
-                  c-0.2,0-0.5-0.1-0.7-0.2l-0.1,0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.4C0.8,20.8,0,18.3,0,15.6c0-3.2,1.1-6.1,3-8.3
-                  L4.3,10.8z"></path>
-              </svg><p>Pressão atmosférica <span id="pressure"></span></p>
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M23.8,22.8c-0.1,0.1-0.2,0.3-0.3,0.4c-0.1,0.1-0.2,0.2-0.2,0.3 l-0.1-0.1c-0.2,0.1-0.4,0.2-0.7,0.2c-0.8,0-1.5-0.7-1.5-1.5c0-0.1,0-0.2,0.1-0.3l-0.1-0.1c1.1-1.4,1.8-3.2,2-5.1L19,16v-0.8l3.9-0.6 c-0.5-4.7-4.2-8.5-9-9l-0.6,3.9h-0.8L12,5.7c-1.3,0.1-2.4,0.5-3.5,1L6.6,4.3c1.9-1.1,4.1-1.7,6.4-1.7c7.2,0,13,5.8,13,13 C26,18.3,25.2,20.7,23.8,22.8z M13,15.6c2.2,0,4,1.8,4,4c0,1.1-0.5,2.1-1.2,2.9c-0.2,0.4-0.4,0.7-0.8,0.9c-0.4,0.2-0.9,0.3-1.3,0.2 c-0.2,0-0.5,0.1-0.7,0.1c-2.2,0-4-1.8-4-4c0-0.9,0.3-1.7,0.8-2.4L3,2.4l9.3,13.3C12.5,15.6,12.8,15.6,13,15.6z M4.3,10.8 c-0.6,1.2-1.1,2.5-1.2,3.9L7,15.2V16l-3.9,0.6c0.2,1.9,0.9,3.7,2,5.1l-0.1,0.1C5,21.9,5,22,5,22.1c0,0.8-0.7,1.5-1.5,1.5 c-0.2,0-0.5-0.1-0.7-0.2l-0.1,0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.4C0.8,20.8,0,18.3,0,15.6c0-3.2,1.1-6.1,3-8.3 L4.3,10.8z"></path>
+              </svg><p class="m-0">Pressão atmosférica <span id="pressure"></span></p>
             </div>
-            <p>Pressão atmosférica ao nível do mar <span id="sea_level"></span></p>
-            <p>Pressão atmosférica no nível do solo <span id="grnd_level"></span></p>
+            <hr class="text-white m-0">
+            <div class="pressure">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26" enable-background="new 0 0 26 26" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M23.8,22.8c-0.1,0.1-0.2,0.3-0.3,0.4c-0.1,0.1-0.2,0.2-0.2,0.3 l-0.1-0.1c-0.2,0.1-0.4,0.2-0.7,0.2c-0.8,0-1.5-0.7-1.5-1.5c0-0.1,0-0.2,0.1-0.3l-0.1-0.1c1.1-1.4,1.8-3.2,2-5.1L19,16v-0.8l3.9-0.6 c-0.5-4.7-4.2-8.5-9-9l-0.6,3.9h-0.8L12,5.7c-1.3,0.1-2.4,0.5-3.5,1L6.6,4.3c1.9-1.1,4.1-1.7,6.4-1.7c7.2,0,13,5.8,13,13 C26,18.3,25.2,20.7,23.8,22.8z M13,15.6c2.2,0,4,1.8,4,4c0,1.1-0.5,2.1-1.2,2.9c-0.2,0.4-0.4,0.7-0.8,0.9c-0.4,0.2-0.9,0.3-1.3,0.2 c-0.2,0-0.5,0.1-0.7,0.1c-2.2,0-4-1.8-4-4c0-0.9,0.3-1.7,0.8-2.4L3,2.4l9.3,13.3C12.5,15.6,12.8,15.6,13,15.6z M4.3,10.8 c-0.6,1.2-1.1,2.5-1.2,3.9L7,15.2V16l-3.9,0.6c0.2,1.9,0.9,3.7,2,5.1l-0.1,0.1C5,21.9,5,22,5,22.1c0,0.8-0.7,1.5-1.5,1.5 c-0.2,0-0.5-0.1-0.7-0.2l-0.1,0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.4C0.8,20.8,0,18.3,0,15.6c0-3.2,1.1-6.1,3-8.3 L4.3,10.8z"></path>
+              </svg><p class="m-0">Pressão ao nível do mar <span id="sea_level"></span></p>
+            </div>
+            <hr class="text-white m-0">
+            <div class="pressure">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26" enable-background="new 0 0 26 26" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M23.8,22.8c-0.1,0.1-0.2,0.3-0.3,0.4c-0.1,0.1-0.2,0.2-0.2,0.3 l-0.1-0.1c-0.2,0.1-0.4,0.2-0.7,0.2c-0.8,0-1.5-0.7-1.5-1.5c0-0.1,0-0.2,0.1-0.3l-0.1-0.1c1.1-1.4,1.8-3.2,2-5.1L19,16v-0.8l3.9-0.6 c-0.5-4.7-4.2-8.5-9-9l-0.6,3.9h-0.8L12,5.7c-1.3,0.1-2.4,0.5-3.5,1L6.6,4.3c1.9-1.1,4.1-1.7,6.4-1.7c7.2,0,13,5.8,13,13 C26,18.3,25.2,20.7,23.8,22.8z M13,15.6c2.2,0,4,1.8,4,4c0,1.1-0.5,2.1-1.2,2.9c-0.2,0.4-0.4,0.7-0.8,0.9c-0.4,0.2-0.9,0.3-1.3,0.2 c-0.2,0-0.5,0.1-0.7,0.1c-2.2,0-4-1.8-4-4c0-0.9,0.3-1.7,0.8-2.4L3,2.4l9.3,13.3C12.5,15.6,12.8,15.6,13,15.6z M4.3,10.8 c-0.6,1.2-1.1,2.5-1.2,3.9L7,15.2V16l-3.9,0.6c0.2,1.9,0.9,3.7,2,5.1l-0.1,0.1C5,21.9,5,22,5,22.1c0,0.8-0.7,1.5-1.5,1.5 c-0.2,0-0.5-0.1-0.7-0.2l-0.1,0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.4C0.8,20.8,0,18.3,0,15.6c0-3.2,1.1-6.1,3-8.3 L4.3,10.8z"></path>
+              </svg><p class="m-0">Pressão no nível do solo <span id="grnd_level"></span></p>
+            </div>
           </div>
         </div>
       </div>
