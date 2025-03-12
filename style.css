@@ -9,6 +9,11 @@ body{
     background-color: #2f7aef;
 }
 
+p{
+    color: white;
+    padding-left: 5px;
+}
+
 .container-main{
     display: flex;
     height: 100vh;
@@ -51,20 +56,37 @@ input[type=text]{
     width: 15px;
 }
 
+#name{
+    margin-left: 16px;
+    font-size: 44px;
+}
+
+#date{
+    font-size: 13px;
+    margin-left: 16px;
+    padding-left: 3px;
+}
+
 .bg-temp{
     display: flex;
     align-items: center;
     gap: 80px;
 }
 
-.weather{
-    display: flex;
-    align-items: center;
-}
-
 .info-temp svg{
     width: 15px;
     height: 15px;
+}
+
+#temp {
+    font-size: 3.7rem;
+    color: white;
+    position: relative;
+}
+
+#temp span{
+    font-size: 20px;
+    position: absolute;
 }
 
 .info-clima p span{
@@ -79,60 +101,8 @@ input[type=text]{
     height: 15px;
 }
 
-.temp{
-    display: flex;
-    gap: 20px;
-}
-
-#temp {
-    font-size: 3.7rem;
-    color: white;
-    position: relative;
-}
-
-#temp span{
-    font-size: 20px;
-    position: absolute;
-}
-
-#name{
-    font-size: 44px;
-}
-
-.pressure{
-    display: flex;
-    align-items: center;
-}
-
-.pressure svg{
-    width: 20px;
-}
-
-.pressure path{
-    fill: orange;
-}
-
-.pressure span{
-    color: orange;
-}
-
-.humidity{
-    display: flex;
-    align-items: center;
-}
-
-.humidity svg{
-    width: 20px;
-}
-
-.humidity span{
-    color: #2f7aef;
-}
-
-p{
-    color: white;
-    font-size: 20px;
-    padding-left: 5px;
+.text-ccc{
+    color: #ccc;
 }
 
 .inline{
@@ -146,6 +116,34 @@ p{
     display: inline;
 }
 
-.text-ccc{
-    color: #ccc;
+.humidity{
+    display: flex;
+    align-items: center;
+}
+
+.humidity svg{
+    width: 20px;
+    height: 19px;
+}
+
+.humidity span{
+    color: #2f7aef;
+}
+
+.pressure{
+    display: flex;
+    align-items: center;
+}
+
+.pressure svg{
+    width: 20px;
+    height: 19px;
+}
+
+.pressure path{
+    fill: orange;
+}
+
+.pressure span{
+    color: orange;
 }
