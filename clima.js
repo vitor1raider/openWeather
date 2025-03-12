@@ -10,6 +10,11 @@ async function getClima() {
 
     const response = await fetch(apiUrl);
     const objJson = await response.json();
+
+    if (objJson.cod !== 200) {
+        alert("Cidade não encontrada!");
+    }
+
     console.log(objJson);
     return objJson;
 }
@@ -70,9 +75,39 @@ async function mostrarClima() {
         case 'Drizzle':
             clima.src = imagens[5];
             break;
-        default:
-            clima.src = imagens[2];  
     }
 }
 
-window.onload = mostrarClima; 
+function mostrarDataHora() {
+    const agora = new Date();
+            
+    // Definir os dias da semana e os meses
+    const diasSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+    const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+    const diaSemana = diasSemana[agora.getDay()];  // Obtém o dia da semana
+    const dia = agora.getDate();  // Obtém o dia do mês
+    const mes = meses[agora.getMonth()];  // Obtém o nome do mês
+    const horas = String(agora.getHours()).padStart(2, '0');  // Obtém as horas
+    const minutos = String(agora.getMinutes()).padStart(2, '0');  // Obtém os minutos
+
+    // Formatação final: Exemplo "qua, 12 de março 14:39"
+    const dataHoraFormatada = `${diaSemana}, ${dia} de ${mes} ${horas}:${minutos}`;
+
+    // Exibe a data e hora no elemento com id "hora"
+    document.querySelector('#date').innerHTML = dataHoraFormatada;
+}
+
+// Atualiza a data e hora a cada minuto (para garantir que o tempo mostrado seja sempre correto)
+setInterval(mostrarDataHora, 60000);
+
+window.onload = () => {
+    mostrarDataHora();
+    mostrarClima();
+
+    document.querySelector('#city_name').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            mostrarClima();
+        }
+    });
+};
