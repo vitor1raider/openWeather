@@ -1,5 +1,5 @@
 async function getClima() {
-    const key = '359706c0ee754da274f1977932d61a7c';
+    const key = 'b1b15e88fa797225412429c1c50c122a1';
     let city = document.querySelector('#city_name').value;
 
     if (!city) {
@@ -12,7 +12,7 @@ async function getClima() {
     const objJson = await response.json();
 
     if (objJson.cod !== 200) {
-        alert("Cidade não encontrada!");
+        alert("Cidade não encontrada!")
     }
 
     console.log(objJson);
@@ -20,6 +20,8 @@ async function getClima() {
 }
 
 async function mostrarClima() {  
+    document.querySelector('#loader').style.display = 'inline-block';
+    document.querySelector('#icon-search').style.display = 'none';
     const objClima = await getClima();
 
     const mostrarInfo = {
@@ -32,6 +34,7 @@ async function mostrarClima() {
         humidity: objClima.main.humidity,
         sea_level: objClima.main.sea_level,
         grnd_level: objClima.main.grnd_level,
+        tempIcon: objClima.weather[0].icon,
         description: objClima.weather[0].description
     };
 
@@ -45,60 +48,28 @@ async function mostrarClima() {
     document.querySelector('#sea_level').innerHTML = `${mostrarInfo.sea_level}hPa`;
     document.querySelector('#grnd_level').innerHTML = `${mostrarInfo.grnd_level}hPa`;
     document.querySelector('#description').innerHTML = `${mostrarInfo.description}`;
-
-    const clima = document.querySelector('#clima_atual');
-    const imagens = [
-        'https://openweathermap.org/img/wn/10n@2x.png',
-        'https://openweathermap.org/img/wn/11d@2x.png',
-        'https://openweathermap.org/img/wn/01d@2x.png',
-        'https://openweathermap.org/img/wn/03d@2x.png',
-        'https://openweathermap.org/img/wn/50d@2x.png',
-        'https://openweathermap.org/img/wn/09d@2x.png'
-    ];
+    document.querySelector('#clima_atual').setAttribute('src', `https://openweathermap.org/img/wn/${mostrarInfo.tempIcon}@2x.png`);
     
-    switch(objClima.weather[0].main) {
-        case 'Rain':
-            clima.src = imagens[0];
-            break;
-        case 'Thunderstorm':
-            clima.src = imagens[1];
-            break;
-        case 'Clear':
-            clima.src = imagens[2];
-            break;
-        case 'Clouds':
-            clima.src = imagens[3];
-            break;
-        case 'Atmosphere':
-            clima.src = imagens[4];
-            break;
-        case 'Drizzle':
-            clima.src = imagens[5];
-            break;
-    }
+    document.querySelector('#loader').style.display = 'none';
+    document.querySelector('#icon-search').style.display = 'inline-block';
 }
 
 function mostrarDataHora() {
     const agora = new Date();
             
-    // Definir os dias da semana e os meses
     const diasSemana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
     const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 
-    const diaSemana = diasSemana[agora.getDay()];  // Obtém o dia da semana
-    const dia = agora.getDate();  // Obtém o dia do mês
-    const mes = meses[agora.getMonth()];  // Obtém o nome do mês
-    const horas = String(agora.getHours()).padStart(2, '0');  // Obtém as horas
-    const minutos = String(agora.getMinutes()).padStart(2, '0');  // Obtém os minutos
+    const diaSemana = diasSemana[agora.getDay()];  
+    const dia = agora.getDate();  
+    const mes = meses[agora.getMonth()];  
+    const horas = String(agora.getHours()).padStart(2, '0');  
+    const minutos = String(agora.getMinutes()).padStart(2, '0');  
 
-    // Formatação final: Exemplo "qua, 12 de março 14:39"
     const dataHoraFormatada = `${diaSemana}, ${dia} de ${mes} ${horas}:${minutos}`;
 
-    // Exibe a data e hora no elemento com id "hora"
     document.querySelector('#date').innerHTML = dataHoraFormatada;
 }
-
-// Atualiza a data e hora a cada minuto (para garantir que o tempo mostrado seja sempre correto)
 setInterval(mostrarDataHora, 60000);
 
 window.onload = () => {
